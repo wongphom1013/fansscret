@@ -58,7 +58,7 @@ const UserPage = ({
 	onClick: any;
   post: any;
   isSubscribed: boolean;
-  admin: User;
+  admin: any;
   id: number;
 }) => {
   const [isLiked, setIsLiked] = useState(false);
