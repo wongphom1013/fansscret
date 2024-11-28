@@ -18,8 +18,8 @@ const Page = async () => {
 				</h1>
 
 				<div className='grid gap-5 grid-cols-1 md:grid-cols-2'>
-					{products.map((product) => (
-						<ProductCard key={product.id} product={product} />
+					{products.map((product : any) => (
+						<ProductCard key={product?.id} product={product} />
 					))}
 				</div>
 			</div>
