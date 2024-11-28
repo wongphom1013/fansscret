@@ -48,18 +48,20 @@ type PostWithComments = Prisma.PostGetPayload<{
 
 const UserPage = ({
   style,
-  onClick,
+  // onClick,
   post,
   isSubscribed,
   admin,
-  id
+  id,
+  key
 }: {
   style : any;
-	onClick: any;
+	// onClick: any;
   post: any;
   isSubscribed: boolean;
   admin: any;
-  id: number;
+  id: any;
+  key: any;
 }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [comment, setComment] = useState("");
