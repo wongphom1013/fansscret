@@ -5,7 +5,7 @@ import { getUsersAction } from "@/components/home/home-screen/actions";
 import { useState, useEffect } from "react";
 
 import { useSearchParams } from "next/navigation";
-import MessagingPage from "@/components/home/home-screen/messagingPage";
+import MessagingPage from "@/components/home/home-screen/MessagingPage";
 
 const Page = () => {
   const searchParams = useSearchParams();
@@ -16,7 +16,7 @@ const Page = () => {
   const [fetchedUsers, setFetchedUsers] = useState([]);
   useEffect(() => {
     const fetchUsers = async () => {
-      const users = await getUsersAction();
+      const users : any = await getUsersAction();
       console.log(users, "IFNAL USERS");
       setFetchedUsers(users);
     };
@@ -28,7 +28,7 @@ const Page = () => {
     <div className="w-[40vw] lg:w-4.8/5 flex  border-r">
       <div className="mt-5"></div>
       <div className=" w-[40vw]  lg:w-4.8/5 flex flex-col  border-r">
-        {fetchedUsers?.map((user) => {
+        {fetchedUsers?.map((user : any) => {
           if (user?.id == id) {
             return;
           }
