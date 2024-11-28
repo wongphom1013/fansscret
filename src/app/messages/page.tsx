@@ -41,7 +41,7 @@ const Page = () => {
           return (
             <>
               <UserPage
-              style={{width:"40vw"}}
+                style={{width:"40vw"}}
                 id={user?.id}
                 key={user?.id}
                 post={user}
