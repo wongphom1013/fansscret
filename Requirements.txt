@@ -1,0 +1,25 @@
+
+- User Management: Admins need to be able to oversee user accounts, handle sign-ups, manage user roles, and address any account-related issues.
+- Content Moderation: The admin panel should provide tools for monitoring and regulating the content being posted. This could include options for approving posts, banning users, or flagging content.
+- Analytics Dashboard: A built-in analytics dashboard to provide insights on site traffic, user engagement, and content performance. This will be crucial for understanding the site's growth and areas for improvement.
+
+In addition to the admin panel, there is some additional work needed to improve the messaging system, a credits/finances system, and login/signup. These parts are largely finished, but need a bit more done with them.
+
+
+2024/11/29
+- Need
+-This is the image for the login/signup. This for the whole background. Login/signup fields, and the footer with the policies.
+
+Use this as a loading screen. Whenever a page is loading, display this across the whole screen. I am not sure if that is already done or not.
+
+Please try to make at least one commit per day
+
+So I can track your progress
+
+I remembered one other change. I am not sure if this is already done, but on light mode, the background should not be white. Instead of white it should be the light color there. #fff9f6
+
+-Modify - Background change
+modify \src\components\home\auth-screen\HeroSection.tsx 
+modify \src\app\layout.tsx
+
+I modified login/signup page as this image. Is this what you need?
