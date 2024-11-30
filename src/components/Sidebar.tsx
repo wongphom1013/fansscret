@@ -1,3 +1,5 @@
+'use client';
+import { useState } from "react";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import {
@@ -25,6 +27,7 @@ import { ModeToggle } from "./ModeToggle";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import LogoutButton from "./LogoutButton";
 import { getUserProfileAction } from "@/app/update-profile/actions";
+import Loading from "@/components/Loading"; // Import the Loading component
 
 const SIDEBAR_LINKS = [
   {
@@ -65,19 +68,26 @@ const SIDEBAR_LINKS = [
   },
 ];
 
-const Sidebar = async ({ id }: { id: string }) => {
-  const { getUser } = getKindeServerSession();
-  const user = await getUser();
+const Sidebar =  ({ id, user, userProfile }: { id: string, user: any, userProfile: any }) => {
+  //const { getUser } = getKindeServerSession();
+  // const user = await getUser();
 
-  const userProfile = await getUserProfileAction();
+  // const userProfile = await getUserProfileAction();
 
-  const isAdmin = process.env.ADMIN_EMAIL === user?.email;
+  // const isAdmin = process.env.ADMIN_EMAIL === user?.email;
+  const [loading, setLoading] = useState(false); // State to track loading
 
+  const handleLinkClick = () => {
+    setLoading(true); // Show loading screen
+  };
   return (
     <div
       className="flex lg:w-1/5 flex-col gap-3 px-2 border-r sticky
     left-0 top-0 h-screen"
     >
+      {/* Loading Screen */}
+      {loading && <Loading />} {/* Display loading screen when loading is true */}
+
       <Link href="/update-profile" className="max-w-fit">
         <Avatar className="mt-4 cursor-pointer">
           <AvatarImage
@@ -102,6 +112,7 @@ const Sidebar = async ({ id }: { id: string }) => {
                     isCreater: userProfile?.isCreater,
                   },
                 }}
+                onClick={handleLinkClick} // Trigger loading on link click
                 className="flex w-12 lg:w-full items-center gap-2 hover:bg-primary-foreground font-bold hover:text-primary px-2 py-1 rounded-full justify-center lg:justify-normal"
               >
                 <link.icon className="w-6 h-6" />
@@ -113,6 +124,7 @@ const Sidebar = async ({ id }: { id: string }) => {
             <Link
               key={link.href}
               href={link.href}
+              onClick={handleLinkClick} // Trigger loading on link click
               className="flex w-12 lg:w-full items-center gap-2 hover:bg-primary-foreground font-bold hover:text-primary px-2 py-1 rounded-full justify-center lg:justify-normal"
             >
               <link.icon className="w-6 h-6" />
@@ -123,6 +135,7 @@ const Sidebar = async ({ id }: { id: string }) => {
 
         <Link
           href={"/secret-dashboard"}
+          onClick={handleLinkClick} // Trigger loading on link click
           className="flex w-12 lg:w-full items-center gap-2 hover:bg-primary-foreground font-bold hover:text-primary px-2 py-1 rounded-full justify-center lg:justify-normal"
         >
           <Lock className="w-6 h-6" />
