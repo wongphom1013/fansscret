@@ -8,7 +8,7 @@ const HeroSection = () => {
 			<div
 				className="relative flex flex-col h-screen w-full bg-cover bg-center bg-no-repeat"
 				style={{
-					backgroundImage: "url('/fansSecret-logo.jpeg')",
+					backgroundImage: "url('/fansSecret-logo.jpg')",
 				}}>
 				
 				<div className="flex-1 flex justify-center items-center bg-black/50 text-white flex-col gap-2 px-4 xl:ml-40 text-center md:text-start">

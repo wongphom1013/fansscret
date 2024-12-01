@@ -9,9 +9,8 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 const HomeScreen = async ({ query = null }: any) => {
   const user = await getUserProfileAction();
 
-  console.log("QUERY: ", query)
+  console.log("QUERY: components\\home\\home-screen\\HomeScreen", query)
   console.log("Loggedin user", user);
-
 
   try {
     if (user) {
@@ -50,6 +49,3 @@ const HomeScreen = async ({ query = null }: any) => {
   }
 };
 export default HomeScreen;
-
-
-console.log("real user id", "sss");
