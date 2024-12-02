@@ -5,37 +5,17 @@ const HeroSection = () => {
 	return (
 
 		<div className='flex h-screen w-full'>
-			<div
-				className="relative flex flex-col h-screen w-full bg-cover bg-center bg-no-repeat"
-				style={{
-					backgroundImage: "url('/fansSecret-logo.jpg')",
-				}}>
-				
-				<div className="flex-1 flex justify-center items-center bg-black/50 text-white flex-col gap-2 px-4 xl:ml-40 text-center md:text-start">
-				<div className="flex gap-4">
-					<AuthButtons />
-					</div>
-				</div>
-				{/* <footer className="w-full bg-black/50 text-white py-4 text-center">
-					<Footer />
-				</footer> */}
-			</div>
-
-
-			{/* <footer className="w-full bg-gray-900 text-white py-4 text-center">
-				<Footer />
-			</footer> */}
-			
-			{/* <div className='flex-1 flex overflow-hidden bg-[#ffa885] relative justify-center items-center z-10 bg-noise'>
-				<img
-					src='/fansSecret-logo1.jpeg'
+			<div className='flex-1 flex overflow-hidden bg-[#ffa885] relative justify-center items-center z-10 bg-noise'>
+ 				<img
+					src='/fansSecret-logo.jpeg'
 					alt='fansSecret-logo.jpeg'
-					className='absolute -left-1/4 opacity-15 -bottom-52 lg:scale-150 xl:scale-105 scale-[2] pointer-events-none select-none border'
+					className='absolute -left-1/4 opacity-15 -bottom-52 lg:scale-150 xl:scale-105 scale-[2]
+            pointer-events-none select-none border'
 				/>
 				<div className='flex flex-col gap-2 px-4 xl:ml-40 text-center md:text-start font-semibold'>
 					<Image
 					
-						src={"/fansSecret-logo2.png"}
+						src={"/fansSecret-logo.jpeg"}
 						alt='fansSecret-logo.jpeg'
 						width={769}
 						height={182}
@@ -50,16 +30,16 @@ const HeroSection = () => {
 					</p>
 					<AuthButtons />
 				</div>
-			</div> */}
+			</div>
 
-			{/* <div className='flex-1 relative overflow-hidden justify-center items-center hidden md:flex'>
+			<div className='flex-1 relative overflow-hidden justify-center items-center hidden md:flex'>
 				<Image
 					src={"/auth-cover.jpg"}
 					alt='fanssecret'
 					fill
 					className='object-cover opacity-90 pointer-events-none select-none h-full'
 				/>
-			</div> */}
+			</div>
 		</div>
 	);
 };

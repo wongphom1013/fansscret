@@ -11,7 +11,7 @@ export async function checkAuthStatus() {
 	if (!user) return { success: false };
 
 	const existingUser = await prisma.user.findUnique({ where: { id: user.id } });
-	// const referralId = generateUniqueReferralId(); // Implement your own logic
+	const referralId = generateUniqueReferralId(); // Implement your own logic
 	// sign up
 	if (!existingUser) {
 		console.log("here")

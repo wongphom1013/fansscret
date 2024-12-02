@@ -26,11 +26,11 @@ const HomeScreen = async ({ query = null }: any) => {
       };
 
       console.log(user, "USER ACTUAL");
-      const users = await prisma.user.create({
-        data: body,
-      });
+      // const users = await prisma.user.create({
+      //   data: body,
+      // });
 
-      console.log("USER POSTED :", users);
+      // console.log("USER POSTED :", users);
       const admin = user.isCreater || false;
     
       console.log("email", admin);
