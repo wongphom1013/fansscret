@@ -16,7 +16,7 @@ export function ModeToggle() {
 	};
 	return (
 		<div className='flex flex-wrap gap-2 px-1 md:px-2'>
-			<Button variant={"outline"} size={"icon"} onClick={changeBackgroundColor}>
+			<Button variant={"outline"} size={"icon"} onClick={() => setTheme("light")}>
 				<SunIcon className='h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 text-muted-foreground' />
 			</Button>
 			<Button variant={"outline"} size={"icon"} onClick={() => setTheme("dark")}>
