@@ -7,16 +7,7 @@ const Loading: React.FC = () => {
     const [isVisible, setIsVisible] = useState(true);
 	const { theme } = useTheme();
 
-    console.log("theme", theme)
-
-    //   useEffect(() => {
-    //     //Hide the loading screen after 2 seconds
-    //     const timer = setTimeout(() => {
-    //       setIsVisible(false);
-    //     }, 2500);
-
-    //     return () => clearTimeout(timer); // Cleanup timer on component unmount
-    //   }, []);
+    //console.log("theme", theme)
 
     if (!isVisible) return null;
     return (

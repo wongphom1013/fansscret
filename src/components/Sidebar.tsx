@@ -190,7 +190,8 @@ import {
   User,
   Bell,
   Coins,
-  MessageCircle,
+ // MessageCircle,
+  MessageCircleMore,
   Lock,
   Settings,
   PieChart,
@@ -231,11 +232,10 @@ const SIDEBAR_LINKS = [
     href: "/notifications",
   },
   {
-    icon: MessageCircle,
+    icon: MessageCircleMore,
     label: "Messages",
     href: "/messages",
   },
-
   {
   	icon: PieChart,
   	label: "Admin",
@@ -258,9 +258,8 @@ const Sidebar = async ({ id }: { id: string }) => {
 
   return (
     <div
-      className="flex lg:w-1/5 flex-col gap-3 px-2 border-r sticky
-    left-0 top-0 h-screen"
-    >
+      className="flex flex-col gap-3 px-2 border-r sticky
+    left-0 top-0 h-screen" >
       <Link href="/update-profile" className="max-w-fit">
         <Avatar className="mt-4 cursor-pointer">
           <AvatarImage

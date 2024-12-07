@@ -7,13 +7,8 @@ import { Button } from "@/components/ui/button";
 
 export function ModeToggle() {
 	const { setTheme } = useTheme();
-		const [bgColor, setBgColor] = useState(""); // Local state for background color
+	const [bgColor, setBgColor] = useState(""); // Local state for background color
 
-	// Function to change background color
-	const changeBackgroundColor = () => {
-		setBgColor("#fff9f6"); // Change background color to the desired color
-		setTheme("light"); // Optionally, set theme to light as well
-	};
 	return (
 		<div className='flex flex-wrap gap-2 px-1 md:px-2'>
 			<Button variant={"outline"} size={"icon"} onClick={() => setTheme("light")}>

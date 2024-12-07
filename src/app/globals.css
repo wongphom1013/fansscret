@@ -73,3 +73,6 @@
 	background-position-x: -100px;
 	background-size: 90%;
 }
+::-webkit-scrollbar {
+    display: none;
+}
