@@ -10,6 +10,7 @@ import React, { useEffect, useState, useRef, MutableRefObject } from "react";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import { MessageCircleMore } from "lucide-react";
+import AdminMessage from "@/components/home/home-screen/adminmessage";
 // import {HandleCredits} "fs/promises";
 import  Chat  from "@/components/Chat";
 const Input = ({ className, ...props }: any) => (
@@ -37,7 +38,48 @@ const MessagingPage = (props: any) => {
   const [newMessage, setNewMessage] = useState("");
   const messagesEndRef = useRef() as MutableRefObject<HTMLDivElement>;
 
+  const [adminMessage, setAdminMessage] = useState("Welcome to the chat! Please follow the rules.");
+
+
   const handleOnPost = async () => {
+    //admin side
+
+    // Fetch banned words from API
+    const bannedResponse = await fetch(`/api/admin/bannedwords`);
+    if (!bannedResponse.ok) {
+      throw new Error('Failed to fetch bannedwords');
+    }
+    const data = await bannedResponse.json();
+    
+    for (const ele of data) {
+      if (newMessage.includes(ele.word)) {
+        alert("Your message contains banned words. Please modify it.");
+        const banned_word = ele.word;
+
+        try {
+          console.log("hi there")
+          const response = await axios.post(`/api/admin/bannedbehaviors`, {
+            senderId: props.senderId,
+            receiverId: props.receiverId,
+            bannedword: banned_word,
+            send_content: newMessage,
+            send_time: new Date().toISOString(),
+          });
+
+        } catch (error) {
+          console.error("Error posting banned behavior:", error);
+        }
+
+        // Prevent the message from being sent
+        return;
+
+      }
+
+    };
+
+
+    ////////////////////////////////////////////////////////////////
+
     const body = {
       content: newMessage,
       senderId: props.senderId
@@ -71,6 +113,12 @@ const MessagingPage = (props: any) => {
 
   return (
     <div style={props.style} className="flex h-screen flex-col justify-end  ">
+      {/* Admin Message View */}
+      <div className="h-1/6 bg-gray-300 p-2">
+        {/* <p className="text-sm font-semibold">Admin Message: Important announcement!</p> */}
+        <AdminMessage />
+      </div>
+
       {/* Messages List */}
       {
         fetchedMessages.length === 0 &&

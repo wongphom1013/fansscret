@@ -26,6 +26,7 @@ model User {
   comments      Comment[]
   likes         Like[]
   notifications Notifications[]
+  isBlocked Boolean @default(false)
 
   
   messages Message[] @relation("Sender")
@@ -54,8 +55,12 @@ model Message {
   receiver User @relation("Receiver", fields: [receiverId], references: [id])
 }
 
-
-
+model AdminMessage {
+  id        Int      @id @default(autoincrement())
+  m_title   String
+  m_content   String
+  createdAt DateTime @default(now())
+}
 
 model Post {
   id         String    @id @default(cuid())
@@ -70,6 +75,7 @@ model Post {
   price      Int?
   comments   Comment[]
   likesList  Like[]
+  isChecked  Boolean @default(false)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -173,3 +179,38 @@ model Purchases {
     seller   User @relation("Seller", fields: [sellerId], references: [id])
     buyer User @relation("Buyer", fields: [buyerId], references: [id])
 }
+
+model Admin {
+    id   Int @id  @default(autoincrement())
+    name String
+    email String
+    createdAt DateTime @default(now())
+}
+model BannedWord {
+    id   Int @id  @default(autoincrement())
+    word String
+    banned_state Boolean
+    createdAt DateTime @default(now())
+}
+
+model BannedList {
+    id   Int @id  @default(autoincrement())
+    ban_active Boolean @default(false)
+}
+
+model BannedBehavior {
+    id   Int @id  @default(autoincrement())
+    senderId String
+    receiverId String
+    bannedword String
+    send_content String
+    send_time DateTime @default(now())
+}
+ 
+model BannedActive {
+    id   Int @id  @default(autoincrement())
+    ban_active Boolean @default(false)
+ 
+}
+
+
