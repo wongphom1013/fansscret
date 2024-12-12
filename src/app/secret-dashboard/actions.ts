@@ -62,7 +62,7 @@ export async function createPostAction({
       const user = await prisma.user.findFirst({
         where: {
           email: {
-            startsWith: collaborateUsers[i].replaceAll("#", "")
+            startsWith: collaborateUsers[i].replaceAll("@", "")
           }
         }
       });

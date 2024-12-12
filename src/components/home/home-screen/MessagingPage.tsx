@@ -31,10 +31,7 @@ const Button = ({ children, className, ...props }: any) => (
   </button>
 );
 
-// const socket = io(process.env.SOCEKT_SERVER_URL);
-const socket = io('http://localhost:5000');
-
-console.log("process.env.SOCEKT_SERVER_URL: ", process.env.SOCEKT_SERVER_URL)
+const socket = io(process.env.NEXT_PUBLIC_SOCEKT_SERVER_URL);
 
 const MessagingPage = (props: any) => {
   const searchParams = useSearchParams();
@@ -44,11 +41,6 @@ const MessagingPage = (props: any) => {
   const [newMessage, setNewMessage] = useState("");
   const messagesEndRef = useRef() as MutableRefObject<HTMLDivElement>;
 
-  const [adminMessage, setAdminMessage] = useState("Welcome to the chat! Please follow the rules.");
-
-
-  
-
   const handleOnPost = async () => {
     // Fetch banned words from API
     const bannedResponse = await fetch(`/api/admin/bannedwords`);
@@ -56,14 +48,13 @@ const MessagingPage = (props: any) => {
       throw new Error('Failed to fetch bannedwords');
     }
     const data = await bannedResponse.json();
-    
+
     for (const ele of data) {
       if (newMessage.includes(ele.word)) {
         alert("Your message contains banned words. Please modify it.");
         const banned_word = ele.word;
 
         try {
-          console.log("hi there")
           const response = await axios.post(`/api/admin/bannedbehaviors`, {
             senderId: props.senderId,
             receiverId: props.receiverId,
@@ -75,13 +66,10 @@ const MessagingPage = (props: any) => {
         } catch (error) {
           console.error("Error posting banned behavior:", error);
         }
-
-        // Prevent the message from being sent
         return;
-
       }
-
     };
+
     const body = {
       content: newMessage,
       senderId: props.senderId
@@ -94,22 +82,7 @@ const MessagingPage = (props: any) => {
     scrollToRecentMsg();
   }
 
-    const body = {
-      content: newMessage,
-      senderId: props.senderId
-    }
-
-    const res = await axios.post(`/api/message/${props.receiverId}`, body);
-    setFetchedMessages([...fetchedMessages, res.data]);
-    setNewMessage("");
-
-    setTimeout(() => {
-      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-    }, 500);
-  }
-
-  useEffect(() => {   
-    
+  useEffect(() => {
     setFetchedMessages(props.messageData);
     setNewMessage("");
 

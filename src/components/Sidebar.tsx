@@ -244,7 +244,7 @@ const SIDEBAR_LINKS = [
   {
     icon: DollarSign,
     label: "Financials",
-    href: "/payout",
+    href: "/credit/manage",
   },
 ];
 

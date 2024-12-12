@@ -95,7 +95,7 @@ const Page = () => {
 							value={firstname}
 							onChange={(e) => setFirstname(e.target.value)}
 							className="border border-gray-300 p-2 rounded-md"
-							placeholder="first name"
+							placeholder="Firstname"
 							style={{ background: "#fafbff", color: "#808080" }}
 							required
 						/>
@@ -106,7 +106,7 @@ const Page = () => {
 							value={lastname}
 							onChange={(e) => setLastname(e.target.value)}
 							className="border border-gray-300 p-2 rounded-md"
-							placeholder="last name"
+							placeholder="Lastname"
 							style={{ background: "#fafbff", color: "#808080" }}
 							required
 						/>
