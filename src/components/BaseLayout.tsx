@@ -14,15 +14,13 @@ const BaseLayout = async ({
 }) => {
 
 	const { isAuthenticated } = getKindeServerSession();
-	console.log("AAAAAAAA", isAuthenticated);
-	const {getUser}= getKindeServerSession();
-	const user = await getUser();
-	console.log("BBBBBBBB", user);
+	const {getUser}= getKindeServerSession()
+	const user = await getUser()
+	const isAdmin = process.env.ADMIN_EMAIL === user?.email;
 
 	if (!(await isAuthenticated())) {
 		return redirect("/");
 	}
-
 	
 	return (
 	<div className='flex max-w-2xl lg:max-w-7xl mx-auto relative'>
@@ -35,4 +33,5 @@ const BaseLayout = async ({
 	);
 	
 };
+
 export default BaseLayout;

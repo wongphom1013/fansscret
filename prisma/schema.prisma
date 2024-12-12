@@ -72,6 +72,7 @@ model Post {
   isPublic   Boolean   @default(false)
   isSheduled String?
   hashtags   String?
+  collaboratetags String?
   price      Int?
   comments   Comment[]
   likesList  Like[]
@@ -211,6 +212,24 @@ model BannedActive {
     id   Int @id  @default(autoincrement())
     ban_active Boolean @default(false)
  
+}
+
+model CreditHistory {
+  id String @id @default(cuid())
+  userId String
+  amount Float 
+  type String
+  fromUserId String
+  toUserId String
+  createdAt DateTime @default(now())
+}
+
+model FinanceHistory {
+  id String @id @default(cuid())
+  userId String
+  amount Float 
+  type String
+  createdAt DateTime @default(now())
 }
 
 
