@@ -72,7 +72,8 @@ const CreatePost = () => {
           type="submit"
           //className="text-white absolute end-2.5 bottom-2.5 bg-[#E4BEAD] hover:bg-[#e4bead99] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-[#E4BEAD] dark:hover:bg-[#e4beada2] dark:focus:ring-gray-700"
           className={`text-white absolute end-2.5 bottom-2.5 bg-[#E4BEAD] hover:bg-[#e4bead99] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-[#E4BEAD] dark:hover:bg-[#e4beada2] dark:focus:ring-gray-700 ${isBanned ? 'opacity-50 cursor-not-allowed' : ''}`}
-          disabled>
+          // disabled>
+          >
           Post
         </button>
       </div>

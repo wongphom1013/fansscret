@@ -15,10 +15,9 @@ import { Label } from "@/components/ui/label";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-const ReferralForm =  ({user} : any) => {
+const ReferralForm = ({ user }: any) => {
   const [name, setName] = useState("");
   const router = useRouter();
-  console.log(user, "USER IDdddd ")
 
   return (
     <>
@@ -30,7 +29,7 @@ const ReferralForm =  ({user} : any) => {
         onSubmit={(e) => {
           e.preventDefault();
           router.push(`/onboarding/${user}`);
-          router.refresh(); 
+          router.refresh();
         }}
       >
         <Card className="w-full max-w-md mx-auto">

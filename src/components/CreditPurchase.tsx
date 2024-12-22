@@ -110,7 +110,8 @@ export default function CreditPurchase() {
 			amount: payAmount,
 			type: "Purchased"
 		});
-		window.open(`https://nowpayments.io/payment/?iid=${NowpaymentLinkId[payAmount.toString()]}`, '_blank', 'noopener,noreferrer');
+		// window.open(`https://nowpayments.io/payment/?iid=${NowpaymentLinkId?[payAmount.toString()]}`, '_blank', 'noopener,noreferrer');
+		window.open('https://nowpayments.io/payment/?iid=' + NowpaymentLinkId[payAmount.toString() as keyof typeof NowpaymentLinkId], '_blank', 'noopener,noreferrer');
 	};
 
 	const handleClickAddress = () => {
@@ -179,7 +180,7 @@ export default function CreditPurchase() {
 						<div className='flex flex-wrap xl:flex-nowrap items-center bg-white dark:bg-gray-900/80 backdrop-blur-md mx-auto mt-4 max-w-2xl rounded-3xl ring-1 ring-gray-300/70 dark:ring-gray-700 xl:mx-0 xl:flex xl:max-w-none' style={{ justifyContent: "center" }}>
 							<div className="relative w-50" style={{ margin: '30px auto 30px auto' }}>
 								<div style={{ margin: "auto", width: "160px" }}>
-									<QRCodeCanvas value={payAddress} imageSettings={{ src: "https://cryptologos.cc/logos/tether-usdt-logo.png", height: 40, width: 40 }} />
+									<QRCodeCanvas value={payAddress} imageSettings={{ src: "https://cryptologos.cc/logos/tether-usdt-logo.png", height: 40, width: 40, excavate: false }} />
 								</div>
 								<div className="w-full" style={{ marginTop: "20px", display: "flex", justifyContent: "space-around", alignItems: "center" }}>
 									<input

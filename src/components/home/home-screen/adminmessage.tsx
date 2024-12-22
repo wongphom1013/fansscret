@@ -58,7 +58,7 @@ const AdminMessage: React.FC = () => {
 
     return (
         <div style={{ maxHeight: '300px', overflowY: 'auto', border: '1px solid #ccc', padding: '10px' }}>
-            <h3 className='font-bold'>Admin Messages</h3>
+            {/* <h3 className='font-bold'>Admin Messages</h3> */}
             {messages.length === 0 ? (
                 <p>No messages available.</p>
             ) : (

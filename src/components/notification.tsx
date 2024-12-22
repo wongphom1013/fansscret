@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import axios from "axios";
+import internal from "stream";
 
 export interface PricingTierFrequency {
   id: string;
@@ -117,8 +118,9 @@ export default function Pricing() {
       ) : (
         <>
           {
-            notifications.map((notification: any) =>
+            notifications.map((notification: any, index: number) =>
               <div
+                key={index}
                 style={{ width: "100%" }}
                 className="w-full flex flex-col items-center"
               >

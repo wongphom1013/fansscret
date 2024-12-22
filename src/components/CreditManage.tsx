@@ -60,7 +60,7 @@ export default function CreditManage() {
 	}, []);
 
 	const fancyDateTimeFormat = (str: String) => {
-		const date = new Date(str);
+		const date = new Date(str.toString());
 
 		const options: Intl.DateTimeFormatOptions = {
 			year: 'numeric',

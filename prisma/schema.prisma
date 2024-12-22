@@ -12,21 +12,29 @@ datasource db {
 model User {
   id           String   @id @default(cuid())
   email        String   @unique
-  name         String
+  name    String?   
+  firstname    String?   
+  lastname     String?
+  username     String?   @unique
+  birthday     String?
   image        String?
   isSubscribed Boolean  @default(false)
   customerId   String?  @unique // Stripe customer id
   isCreater    Boolean  @default(false)
   isVerified   Boolean? @default(false)
+  isVerifySubmitted Boolean? @default(false)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
-  credits Int       @default(0)
-  subscription  Subscription?
-  orders        Order[]
-  comments      Comment[]
-  likes         Like[]
+  credits      Int @default(0)
+  subscription Subscription?
+  orders       Order[]
+  comments     Comment[]
+  likes        Like[]
   notifications Notifications[]
   isBlocked Boolean @default(false)
+  financeVerificationFileLink String?
+  idVerificationFileLink String?
+  selfieLink String?
 
   
   messages Message[] @relation("Sender")
@@ -40,8 +48,6 @@ model User {
 
   referralId String  @unique
   referredBy String?
-
-
 }
 
 model Message {

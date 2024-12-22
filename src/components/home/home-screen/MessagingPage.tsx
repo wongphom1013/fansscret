@@ -33,11 +33,21 @@ const Button = ({ children, className, ...props }: any) => (
 
 const socket = io(process.env.NEXT_PUBLIC_SOCEKT_SERVER_URL);
 
+interface Message {
+  id: number,
+  content: string,
+  senderId: string,
+  receiverId: string,
+  createdAt: Date,
+  sender: string,
+  receiver: string,
+}
+
 const MessagingPage = (props: any) => {
   const searchParams = useSearchParams();
   const id = searchParams.get('id'); //Logined User Id
 
-  const [fetchedMessages, setFetchedMessages] = useState([]);
+  const [fetchedMessages, setFetchedMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState("");
   const messagesEndRef = useRef() as MutableRefObject<HTMLDivElement>;
 
@@ -115,17 +125,16 @@ const MessagingPage = (props: any) => {
     setTimeout(() => {
       messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }, 100);
-  }
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleOnPost();
+    }
+  };
 
   return (
     <div style={props.style} className="flex h-screen flex-col justify-end  ">
-      {/* Admin Message View */}
-      <div className="h-1/6 bg-gray-300 p-2">
-        {/* <p className="text-sm font-semibold">Admin Message: Important announcement!</p> */}
-        <AdminMessage />
-      </div>
-
-      {/* Messages List */}
       {
         fetchedMessages.length === 0 &&
         <div className="flex justify-center items-center mb-[40vh] flex-col gap-5 ">
@@ -194,6 +203,7 @@ const MessagingPage = (props: any) => {
             placeholder="Type a message..."
             value={newMessage}
             onChange={(e: any) => setNewMessage(e.target.value)}
+            onKeyPress={handleKeyPress}
             className="flex-grow mr-2"
             style={{ border: "1px solid rgb(59, 130, 246)" }}
           />
