@@ -47,16 +47,21 @@ const ReferralForm = ({ user }: any) => {
                 id="name"
                 type="text"
                 placeholder="Referral Link/Code"
-                required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
           </CardContent>
           <CardFooter>
-            <Button className="w-full" type="submit">
-              Submit
-            </Button>
+            {
+              name !== "" ?
+                <Button className="w-full" type="submit">
+                  Submit
+                </Button>
+                : <Button className="w-full" type="submit">
+                  Skip
+                </Button>
+            }
           </CardFooter>
         </Card>
       </form>
